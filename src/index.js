@@ -2,12 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { FirebaseContext } from './store/Context';
+import Context from './store/Context'
 import reportWebVitals from './reportWebVitals';
+import {firebaseApp,firestore,storage} from './firebase/config'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <React.StrictMode>
+    <FirebaseContext.Provider value={{firebaseApp,firestore,storage}}>
+      <Context>
     <App />
+    </Context>
+    </FirebaseContext.Provider>
   </React.StrictMode>
 );
 
